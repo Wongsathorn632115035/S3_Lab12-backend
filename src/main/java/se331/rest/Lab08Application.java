@@ -21,7 +21,6 @@ public class Lab08Application {
                 registry.addMapping("/**")
                         .allowedOrigins("http://localhost:3000")
                         .exposedHeaders("x-total-count");
-
             }
         };
     }
