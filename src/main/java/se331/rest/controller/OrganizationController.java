@@ -20,7 +20,7 @@ public class OrganizationController {
     OrganizerService organizerService;
 
     @GetMapping("organizers")
-    public ResponseEntity<?> getEventLists(@RequestParam(value = "_limit", required = false) Integer perPage
+    public ResponseEntity<?> getOrganizerLists(@RequestParam(value = "_limit", required = false) Integer perPage
             , @RequestParam(value = "_page", required = false) Integer page
             , @RequestParam(value = "title", required = false) String title) {
         perPage = perPage == null ? 3 : perPage;
@@ -38,7 +38,7 @@ public class OrganizationController {
     }
 
     @GetMapping("organizer/{id}")
-    public ResponseEntity<?> getEvent(@PathVariable("id") Long id) {
+    public ResponseEntity<?> getOrganizer(@PathVariable("id") Long id) {
         Organizer output = organizerService.getOrganizer(id);
         if (output != null) {
             return ResponseEntity.ok(LabMapper.INSTANCE.getOrganizerDTO(output));
@@ -48,7 +48,7 @@ public class OrganizationController {
     }
 
     @PostMapping("/organizer")
-    public ResponseEntity<?> addEvent(@RequestBody Organizer organizer) {
+    public ResponseEntity<?> addOrganizer(@RequestBody Organizer organizer) {
         Organizer output = organizerService.save(organizer);
         return ResponseEntity.ok(LabMapper.INSTANCE.getOrganizerDTO(output));
     }
